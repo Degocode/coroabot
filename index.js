@@ -82,7 +82,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `MNESAGEM QUANDO UM MEMBRO SAI DO GRUPO @${num.split('@')[0]}👋`
+				teks = `Perdemos mais um coroa. Ele vai fazer falta! @${num.split('@')[0]}👋`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			}
@@ -120,18 +120,18 @@ async function starts() {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: 'MENSAGEM DE ESPERA PRO BOT FAZER ALGO',
-				success: 'MENSAGEM DE CONCLUSÃO',
+				wait: 'ESTAMOS PROCURANDO',
+				success: 'ENCONTRAMOS',
 				error: {
-					stick: 'MENSAGEM DE ERRO QUANDO NAO É POSSIVEL FAZER A FIGURINHA',
-					Iv: 'MENSAGEM DE LINK INVÁLIDO'
+					stick: 'NAO É POSSIVEL FAZER A FIGURINHA',
+					Iv: 'LINK INVÁLIDO'
 				},
 				only: {
-					group: '❌ AVISO QUANDO ALGUEM USA UM COMANDO DE GRUPO NO PRIVADO❌',
-					ownerG: 'MENSAGEM DE QUANDO UM MEMBRO TENTA USAR UM COMANDO QUE APENAS ADMS DO GRUPO PODEM USAR',
-					ownerB: '❌ MENSAGEM QUE APARECE QUANDO ALGUEM TENTA USAR UM COMANDO QUE SÓ PODE SER USADO PELO DONO DO BOT❌',
-					admin: 'MENSAGEM QUE APARECE QUANDO ALGUEM TENTA USAR UM COMANDO QUE SÓ PODE SER USADO PELO DONO DO BOT❌',
-					Badmin: 'MENSAGEM DE QUANDO USAM UM COMANDO MAS O BOT NÃO É ADM'
+					group: '❌ ESSE COMANDO SÓ PODE SER USADO EM GRUPO!❌',
+					ownerG: 'ESSE COMANDO SÓ PODE SER USADO POR ADMs!',
+					ownerB: '❌ ESSE COMANDO SÓ PODE SER USADO QUEM FOR DONO DO BOT!❌',
+					admin: 'ESSE COMANDO SÓ PODE SER USADO POR ADMs!❌',
+					Badmin: 'VOCÊ NÃO É ADM!'
 				}
 			}
 
@@ -181,7 +181,7 @@ async function starts() {
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
-					teks = `*NOME DO SEU BOT* : ${me.name}\n*NOME DO SEU BOT* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*TOTAL DE CONTATOS BLOQUEADOS* : ${blocked.length}\n*O BOT ESTÁ ATIVO* : ${kyun(uptime)}`
+					teks = `*𝒜 𝐿𝐸𝒩𝒟𝒜𝑅𝐼𝒜 𝒞𝒪𝑅𝒪𝒜👑* : ${me.name}\n*𝒜 𝐿𝐸𝒩𝒟𝒜𝑅𝐼𝒜 𝒞𝒪𝑅𝒪𝒜👑* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*TOTAL DE CONTATOS BLOQUEADOS* : ${blocked.length}\n*O BOT ESTÁ ATIVO* : ${kyun(uptime)}`
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 				break
@@ -338,13 +338,13 @@ async function starts() {
 					})
 					break*/
 				case 'hilih':
-					if (args.length < 1) return reply('MENSAGEM PERGUNTANDO ONDE ESTÁ O TEXTO')
+					if (args.length < 1) return reply('CADE O TEXTO MANO')
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
 					reply(anu.result)
 					break
 		
 				case 'yt2mp3':
-					if (args.length < 1) return reply('MENSAGEM PERGUNTANDO ONDE ESTÁ O LINK?')
+					if (args.length < 1) return reply('CADE O LINK?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://mhankbarbar.tech/api/yta?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
@@ -356,7 +356,7 @@ async function starts() {
 					break
 	
 				case 'ytsearch':
-					if (args.length < 1) return reply('MENSAGEM PERGUNTANDO O QUE A PESSOA ESTA PROCURANDO ')
+					if (args.length < 1) return reply('O QUE VOCÊ TA PROCURANDO NO YOUTUBE? ')
 					anu = await fetchJson(`https://mhankbarbar.tech/api/ytsearch?q=${body.slice(10)}&apiKey=${apiKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = '=================\n'
@@ -367,7 +367,7 @@ async function starts() {
 					break
 			
 				case '':
-					if (args.length < 1) return reply('MENSAGEM PERGUNTANDO ONDE ESTÁ O LINK')
+					if (args.length < 1) return reply('CADE O LINK?')
 					if (!isUrl(args[0]) && !args[0].includes('.com')) return reply(mess.error.Iv)
 					reply(mess.wait)
 					anu = await fetchJson(`https://mhankbarbar.tech/api/?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
@@ -378,7 +378,7 @@ async function starts() {
 			
 				case 'stalk':
 					try {
-						if (args.length < 1) return client.sendMessage(from, 'MENSAGEM PERGUNTANDO ONDE ESTA O NOME DO USUÁRIO', text, {quoted: mek})
+						if (args.length < 1) return client.sendMessage(from, 'ESCREVI O NOME DO USUÁRIO', text, {quoted: mek})
 						let { user, stats } = await tiktod.getUserProfileInfo(args[0])
 						reply(mess.wait)
 						teks = `*ID* : ${user.id}\n*Username* : ${user.uniqueId}\n*Nickname* : ${user.nickname}\n*Followers* : ${stats.followerCount}\n*Followings* : ${stats.followingCount}\n*Posts* : ${stats.videoCount}\n*Luv* : ${stats.heart}\n`
@@ -386,13 +386,13 @@ async function starts() {
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: teks})
 					} catch (e) {
 						console.log(`Error :`, color(e,'red'))
-						 reply ('MENSAGEM DE QUANDO O NOME DO USUÁRIO É INVÁLIDO')
+						 reply ('NÃO E NOME DELE')
 					}
 					break
 			
 				case 'nulis':
 				case 'tulis':
-					if (args.length < 1) return reply('MENSAGEM PERGUNTANDO O QUE VC QUER EESCREVE')
+					if (args.length < 1) return reply('O QUE VOCÊ QUER ESCREVE?')
 					teks = body.slice(7)
 					reply(mess.wait)
 					anu = await fetchJson(`https://mhankbarbar.tech/nulis?text=${teks}&apiKey=${apiKey}`, {method: 'get'})
@@ -405,7 +405,7 @@ async function starts() {
 					tipelist = ['desktop','tablet','mobile']
 					if (args.length < 1) return reply('Tipenya apa um?')
 					if (!tipelist.includes(args[0])) return reply('Tipo desktop|tablet|mobile')
-					if (args.length < 2) return reply('MENSAGEM PERGUNTANDO ONDE ESTA O LINK')
+					if (args.length < 2) return reply('CADE O LINK')
 					if (!isUrl(args[1])) return reply(mess.error.Iv)
 					reply(mess.wait)
 					anu = await fetchJson(`https://mhankbarbar.tech/api/url2image?tipe=${args[0]}&url=${args[1]}&apiKey=${apiKey}`, {method: 'get'})
@@ -416,7 +416,7 @@ async function starts() {
 		
 				case 'tstiker':
 				case 'tsticker':
-					if (args.length < 1) return reply('MENSAGEM PERGUNTANDO ONDE ESTÁ O TEXTO')
+					if (args.length < 1) return reply('CADE O TEXTO?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
 					teks = body.slice(9).trim()
@@ -465,17 +465,17 @@ async function starts() {
 					break
 		
 				case 'clearall':
-					if (!isOwner) return reply('MENSAGEM PERGUNTANDO QUEM É A PESSOA QUE USOU O COMANDO') 
+					if (!isOwner) return reply('QUEM É A PESSOA QUE USOU ESSE COMANDO?') 
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
 						client.deleteChat(_.jid)
 					}
-					reply('MENSAGEM DE QUANDO APAGA TODOS OS CHATS')
+					reply('APAGA TODOS OS CHATS')
 					break
 				
 				case 'bc':
-					if (!isOwner) return reply('MENSAGEM PERGUNTANDO QUEM É A PESSOA') 
+					if (!isOwner) return reply('QUEM É A PESSOA') 
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
@@ -500,7 +500,7 @@ async function starts() {
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'MENSAGEM DE QUANDO O BOT PROMOVE ALGUÉM\n'
+						teks = 'VOCÊ FOI PROMOVIDO SOLDADO!'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
@@ -518,14 +518,14 @@ async function starts() {
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'MENSAGEM DIZENDO QUE REBAIXOU ALGUM ADM\n'
+						teks = 'ADM REBAIXADO'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
 						mentions(teks, mentioned, true)
 						client.groupRemove(from, mentioned)
 					} else {
-						mentions(`REBAIXOU @${mentioned[0].split('@')[0]} MENSAGEM DIZENDO QUE REBAIXOU ALGUM ADM COM SUCESSO`, mentioned, true)
+						mentions(`REBAIXOU @${mentioned[0].split('@')[0]} ADM REBAIXADO COM SUCESSO`, mentioned, true)
 						client.groupDemoteAdmin(from, mentioned)
 					}
 					break
@@ -534,14 +534,14 @@ async function starts() {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (args.length < 1) return reply('MENSAGEM PERGUNTANDO QUEM A PESSOA QUER ADICIONAR') 
-					if (args[0].startsWith('08')) return reply('MENSAGEM DIZENDO PRA ESCREVER O NUMERO CORRETAMENTE')
+					if (args.length < 1) return reply('ADICIONAR ESSA PESSOA') 
+					if (args[0].startsWith('08')) return reply('ESCREVER O NUMERO CORRETAMENTE')
 					try {
 						num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
 						client.groupAdd(from, [num])
 					} catch (e) {
 						console.log('Error :', e)
-						reply('MENSAGEM DIZENDO QUE NAO FOI POSSÍVEL ADICIONAR POR QUE O NÚMERO É PRIVADO' )
+						reply('NAO FOI POSSÍVEL ADICIONAR POR QUE O NÚMERO É PRIVADO' )
 					}
 					break
 	
@@ -549,17 +549,17 @@ async function starts() {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('MENSAGEM DIZENDO PRA MARCAR ALGUEM PRA SER EXPULSO!')
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('BANI ESSA PESSOA')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'MENSAGEM DE QUANDO EXPULSA ALGUÉM:\n'
+						teks = 'TCHAU SOLDADO! VOCÊ FEZ MUITA MERDA.'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
 						mentions(teks, mentioned, true)
 						client.groupRemove(from, mentioned)
 					} else {
-						mentions(`MENSAGEM DE QUANDO EXPULSA ALGUÉM : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						mentions(`TCHAU SOLDADO! VOCÊ FEZ MUITA MERDA. : @${mentioned[0].split('@')[0]}`, mentioned, true)
 						client.groupRemove(from, mentioned)
 					}
 					break
@@ -593,14 +593,14 @@ async function starts() {
                                         break
 	
 				case 'toimg':
-					if (!isQuotedSticker) return reply('❌ MENSAGEM DIZENDO PRA MARCAR UMA FIGURINHA❌')
+					if (!isQuotedSticker) return reply('❌MARCAR UMA FIGURINHA❌')
 					reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.png')
 					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 						fs.unlinkSync(media)
-						if (err) return reply('MENSAGEM DE FALHA AO COMVERTER FIGURINHA EM IMAGEM')
+						if (err) return reply('FALHA AO COMVERTER FIGURINHA EM IMAGEM')
 						buffer = fs.readFileSync(ran)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<'})
 						fs.unlinkSync(ran)
@@ -680,7 +680,7 @@ async function starts() {
 							reply(err)
 						})
 					} else {
-						reply('MENSAGEM DIZENDO QUE SO ACEITA FOTOS')
+						reply('CADE A IMAGEM?')
 					}
 					break
 				default:

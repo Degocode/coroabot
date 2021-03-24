@@ -366,7 +366,7 @@ async function starts() {
 					reply(teks.trim())
 					break
 			
-				case '':
+				case 'teste':
 					if (args.length < 1) return reply('CADE O LINK?')
 					if (!isUrl(args[0]) && !args[0].includes('.com')) return reply(mess.error.Iv)
 					reply(mess.wait)

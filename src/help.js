@@ -1,7 +1,7 @@
 const help = (prefix) => {
 	return ` *Comandos de figu* <
 
- comando: *${prefix} sticker* 
+ comando: *${prefix} figu* 
  desc: converter imagem / gif / vídeo em adesivo
  uso: responder imagem / gif / vídeo ou enviar imagem / gif / vídeo com legenda\n
 

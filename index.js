@@ -336,7 +336,6 @@ async function starts() {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'lolizinha'})
-					})
 					break
 				case 'nsfwloli':
 					if (!isNsfw) return reply('❌ *FALSE* ❌')
@@ -344,14 +343,12 @@ async function starts() {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Jangan jadiin bahan buat comli om'})
-					})
 					break*/
 				case 'hilih':
 					if (args.length < 1) return reply('CADE O TEXTO MANO')
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
 					reply(anu.result)
 					break
-		
 				case 'yt2mp3':
 					if (args.length < 1) return reply('CADE O LINK?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
@@ -363,7 +360,6 @@ async function starts() {
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
-	
 				case 'ytsearch':
 					if (args.length < 1) return reply('O QUE VOCÊ TA PROCURANDO NO YOUTUBE? ')
 					anu = await fetchJson(`https://mhankbarbar.tech/api/ytsearch?q=${body.slice(10)}&apiKey=${apiKey}`, {method: 'get'})
@@ -374,7 +370,6 @@ async function starts() {
 					}
 					reply(teks.trim())
 					break
-			
 				case 'teste':
 					if (args.length < 1) return reply('CADE O LINK?')
 					if (!isUrl(args[0]) && !args[0].includes('.com')) return reply(mess.error.Iv)
@@ -384,7 +379,6 @@ async function starts() {
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, video, {quoted: mek})
 					break
-			
 				case 'stalk':
 					try {
 						if (args.length < 1) return client.sendMessage(from, 'ESCREVI O NOME DO USUÁRIO', text, {quoted: mek})
@@ -398,7 +392,6 @@ async function starts() {
 						 reply ('NÃO E NOME DELE')
 					}
 					break
-			
 				case 'nulis':
 				case 'tulis':
 					if (args.length < 1) return reply('O QUE VOCÊ QUER ESCREVE?')

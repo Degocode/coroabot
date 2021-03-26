@@ -311,6 +311,15 @@ async function starts() {
 					break
 				
 	//AQUI NAO PRECISA MUDAR
+                                case 'meme':
+					reply(mess.wait)
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=MEME BRASIL`, {method: 'get'})
+					ri = JSON.parse(JSON.stringify(anu));
+					ze =  ri[Math.floor(Math.random() * ri.length)];
+					nye = await getBuffer(ze)
+					client.sendMessage(from, nye, image, { caption: 'cringe️', quoted: mek })
+					await limitAdd(sender) 	
+					break
 				case 'memeindo':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://imgur.com/${memein.hash}.jpg`)

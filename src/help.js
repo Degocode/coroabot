@@ -1,5 +1,5 @@
 const help = (prefix) => {
-	return ` *Comandos de figu* <
+	return ` *Lendaria coroa👑* <
 
  comando: *${prefix} figu* 
  desc: converter imagem / gif / vídeo em adesivo

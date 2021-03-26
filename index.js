@@ -331,11 +331,11 @@ async function starts() {
 					prefix = args[0]
 					reply(`MENSAGEM DE QUANDO VC MUDA O SINAL QUE O BOT USA NOS COMANDOS: ${prefix}`)
 					break
-				/*case 'loli':
+				case 'loli':
 					loli.getSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ingat! Citai Lolimu'})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'lolizinha'})
 					})
 					break
 				case 'nsfwloli':
